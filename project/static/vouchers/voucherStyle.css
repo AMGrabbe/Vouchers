@@ -1,0 +1,19 @@
+
+.errorMessage{
+    color: rgb(243, 87, 87);
+    font-weight : bold;
+}
+
+#discount{
+    color: rgb(44, 128, 48);
+    font-weight : bold; 
+    font-size: 18px;
+}
+
+body{
+    text-align: center;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
