@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Voucher</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet"type="text/css" href="{% static "vouchers/voucherStyle.css" %}" >
+</head>
+
+<body>
+<div class="container">
+    <div class = "jumbotron">
+        
+        <h1>Please fill in your Code:</h1>
+        
+        <form method = "POST">  
+        {{ form.as_p}}
+        {%csrf_token%}
+            
+        <input type="submit" class='btn btn-dark' value="Submit">
+            
+        {% if discount %}
+        <div> Your discount is <span id="discount">{{discount}}</span>. </div>
+        {% elif error_message  %}
+        <div class ="errorMessage"> {{error_message}} </div>
+        {%endif%}
+        
+    </div>
+</div>
+</body>
+</html> 
