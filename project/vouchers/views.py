@@ -25,7 +25,7 @@ def submit_code(request):
 
 def return_error_message():
     ''' return error message string '''
-    return 'Invalid Code! Your code i either wrong or already expired.'
+    return 'Invalid Code! Your code is either wrong or already expired.'
 
 
 def update_voucher(voucher):
