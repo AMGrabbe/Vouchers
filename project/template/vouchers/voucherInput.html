@@ -15,15 +15,17 @@
         <h1>Please fill in your Code:</h1>
         
         <form method = "POST">  
-        {{ form.as_p}}
+        {{form.as_p}}
         {%csrf_token%}
             
         <input type="submit" class='btn btn-dark' value="Submit">
             
         {% if discount %}
-        <div> Your discount is <span id="discount">{{discount}}</span>. </div>
+        {% if discount_value %}
+        <div> Your discount is <span id="discount">{{discount_value}} {{discount}}</span>. </div>
         {% elif error_message  %}
         <div class ="errorMessage"> {{error_message}} </div>
+        {%endif%}
         {%endif%}
         
     </div>
