@@ -5,8 +5,8 @@ from django.db.models.signals import post_save
 
 
 DISCOUNT_CHOICES = [
-        ('RM 10 off', 'RM 10 off'),
-        ('10% off', '10% off'),
+        ('RM', 'RM'),
+        ('%', '%'),
         ]
 
 
@@ -28,6 +28,7 @@ class Voucher(models.Model):
                 validators.MaxValueValidator(3)],
                                     default=0)
     active = models.BooleanField(default=True)
+    discount_value = models.DecimalField(max_digits=20, decimal_places=2, default=0)
     discount = models.CharField(max_length=32,
                                 choices=DISCOUNT_CHOICES,
                                 default='RM 10 off')

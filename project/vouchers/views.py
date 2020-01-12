@@ -15,7 +15,7 @@ def submit_code(request):
                 voucher = Voucher.objects.get(code=code, active=True)
                 update_voucher(voucher)
                 return render(request, "vouchers/voucherInput.html",
-                              {'form': form, 'discount': voucher.discount})
+                              {'form': form, 'discount': voucher.discount, 'discount_value': voucher.discount_value})
             except Voucher.DoesNotExist:
                 return render(request, "vouchers/voucherInput.html",
                               {'form': form, 'error_message':
