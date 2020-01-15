@@ -5,21 +5,21 @@ from vouchers.forms import VoucherInputForm
 
 
 def submit_code(request):
-    '''process form input'''
+    '''process submitted input'''
     form = VoucherInputForm()
     if request.method == "POST":
         form = VoucherInputForm(request.POST)
         if form.is_valid():
-            try:
-                code = form.cleaned_data['code']
-                voucher = Voucher.objects.get(code=code, active=True)
-                update_voucher(voucher)
-                return render(request, "vouchers/voucherInput.html",
-                              {'form': form, 'discount': voucher.discount, 'discount_value': voucher.discount_value})
-            except Voucher.DoesNotExist:
-                return render(request, "vouchers/voucherInput.html",
-                              {'form': form, 'error_message':
-                               return_error_message()})
+            code = form.cleaned_data['code']
+            voucher = Voucher.objects.get(code=code, active=True)
+            update_voucher(voucher)
+            return render(request, "vouchers/voucherInput.html",
+                          {'form': form, 'discount': voucher.discount,
+                           'discount_value': voucher.discount_value})
+        else:
+            return render(request, "vouchers/voucherInput.html",
+                          {'form': form, 'error_message':
+                           return_error_message()})
     return render(request, "vouchers/voucherInput.html", {'form': form})
 
 
